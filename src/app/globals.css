@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface-light text-slate-800 font-body antialiased transition-colors duration-200;
+}
+
+/* ============================================================
+   MODALITA' NOTTURNA
+   Queste regole sovrascrivono i colori delle classi Tailwind
+   esistenti quando l'elemento <html> ha la classe "dark"
+   (attivata dallo switch giorno/notte), senza dover modificare
+   il markup di ogni singola pagina/componente.
+   ============================================================ */
+
+.dark body {
+  background-color: #0f172a; /* slate-900 */
+  color: #e2e8f0; /* slate-200 */
+}
+
+/* Superfici (card, sfondi bianchi, sfondi "light") */
+.dark .bg-white,
+.dark .bg-surface-light {
+  background-color: #1e293b !important; /* slate-800 */
+}
+.dark .bg-white\/70 {
+  background-color: rgba(30, 41, 59, 0.7) !important;
+}
+.dark .bg-white\/90 {
+  background-color: rgba(15, 23, 42, 0.9) !important;
+}
+.dark .bg-surface-light\/60 {
+  background-color: rgba(30, 41, 59, 0.6) !important;
+}
+.dark .border-surface-border,
+.dark .divide-surface-border > :not([hidden]) ~ :not([hidden]) {
+  border-color: #334155 !important; /* slate-700 */
+}
+.dark .bg-slate-900\/40 {
+  background-color: rgba(0, 0, 0, 0.55) !important;
+}
+
+/* Testi grigi */
+.dark .text-slate-800 {
+  color: #f1f5f9 !important; /* slate-100 */
+}
+.dark .text-slate-700 {
+  color: #e2e8f0 !important; /* slate-200 */
+}
+.dark .text-slate-600 {
+  color: #cbd5e1 !important; /* slate-300 */
+}
+.dark .text-slate-500 {
+  color: #94a3b8 !important; /* slate-400 */
+}
+.dark .text-slate-400 {
+  color: #64748b !important; /* slate-500 */
+}
+.dark .bg-slate-100 {
+  background-color: #334155 !important; /* slate-700 */
+}
+.dark .bg-slate-300 {
+  background-color: #475569 !important; /* slate-600 */
+}
+
+/* Colori brand (blu) */
+.dark .bg-brand-50 {
+  background-color: rgba(47, 102, 240, 0.16) !important;
+}
+.dark .bg-brand-50\/40 {
+  background-color: rgba(47, 102, 240, 0.1) !important;
+}
+.dark .bg-brand-50\/60 {
+  background-color: rgba(47, 102, 240, 0.14) !important;
+}
+.dark .bg-brand-100,
+.dark .bg-brand-100\/70 {
+  background-color: rgba(47, 102, 240, 0.22) !important;
+}
+.dark .border-brand-200 {
+  border-color: rgba(47, 102, 240, 0.35) !important;
+}
+.dark .border-brand-400 {
+  border-color: rgba(92, 141, 255, 0.55) !important;
+}
+.dark .ring-brand-300 {
+  --tw-ring-color: rgba(47, 102, 240, 0.4) !important;
+}
+.dark .text-brand-900 {
+  color: #dce8ff !important; /* brand-100 */
+}
+.dark .text-brand-800 {
+  color: #b9d0ff !important; /* brand-200 */
+}
+.dark .text-brand-700 {
+  color: #8bb0ff !important; /* brand-300 */
+}
+.dark .text-brand-600 {
+  color: #8bb0ff !important; /* brand-300 */
+}
+
+/* Avvisi ambra */
+.dark .bg-amber-50 {
+  background-color: rgba(217, 119, 6, 0.14) !important;
+}
+.dark .border-amber-200 {
+  border-color: rgba(217, 119, 6, 0.35) !important;
+}
+.dark .text-amber-800 {
+  color: #fcd34d !important; /* amber-300 */
+}
+.dark .text-amber-600 {
+  color: #fbbf24 !important; /* amber-400 */
+}
+
+/* Esiti positivi (verde) */
+.dark .bg-green-50 {
+  background-color: rgba(31, 157, 90, 0.14) !important;
+}
+.dark .text-green-800 {
+  color: #86efac !important; /* green-300 */
+}
+
+/* Esiti negativi (rosso) */
+.dark .bg-red-50 {
+  background-color: rgba(224, 67, 61, 0.14) !important;
+}
+.dark .text-red-800 {
+  color: #fca5a5 !important; /* red-300 */
+}
+
+/* Placeholder / stati di caricamento su sfondo pagina */
+.dark ::placeholder {
+  color: #64748b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visibile per accessibilita' da tastiera */
+:focus-visible {
+  outline: 2px solid #2f66f0;
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-500 px-6 py-3 text-white font-semibold shadow-sm transition-all hover:bg-brand-600 hover:shadow-md active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-brand-500;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-2xl border border-surface-border bg-white px-6 py-3 text-brand-700 font-semibold transition-all hover:bg-brand-50 active:scale-[0.98];
+}
+
+.card {
+  @apply rounded-2xl border border-surface-border bg-white shadow-sm;
+}
+
+.dark .btn-secondary {
+  @apply border-slate-700 bg-slate-800 text-brand-300 hover:bg-brand-500/15;
+}
+
+.dark .card {
+  @apply border-slate-700 bg-slate-800;
+}
