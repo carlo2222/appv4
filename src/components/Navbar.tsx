@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { GraduationCap, ChevronLeft, ChevronRight, Home, FileText, LogOut, HelpCircle } from "lucide-react";
+import { GraduationCap, ChevronLeft, ChevronRight, Home, FileText, LogOut, HelpCircle, LayoutDashboard } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { getToken, logout } from "@/lib/api";
 
@@ -52,6 +52,14 @@ export default function Navbar() {
             label="Simulazioni"
             active={pathname?.startsWith("/simulazioni") || pathname === "/simulazione"}
           />
+          {loggedIn && (
+            <NavLink
+              href="/area-riservata"
+              icon={<LayoutDashboard size={16} />}
+              label="Area riservata"
+              active={pathname?.startsWith("/area-riservata")}
+            />
+          )}
           <NavLink
             href="/help"
             icon={<HelpCircle size={16} />}
@@ -103,6 +111,15 @@ export default function Navbar() {
           active={pathname?.startsWith("/simulazioni") || pathname === "/simulazione"}
           compact
         />
+        {loggedIn && (
+          <NavLink
+            href="/area-riservata"
+            icon={<LayoutDashboard size={16} />}
+            label="Progressi"
+            active={pathname?.startsWith("/area-riservata")}
+            compact
+          />
+        )}
         <NavLink
           href="/help"
           icon={<HelpCircle size={16} />}
